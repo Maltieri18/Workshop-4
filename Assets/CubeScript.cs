@@ -2,7 +2,11 @@
 using System.Collections;
 
 public class CubeScript : MonoBehaviour
+
 {
+
+    public Shader shader;
+    public Texture texture;
     // Use this for initialization
     void Start()
     {
@@ -17,7 +21,9 @@ public class CubeScript : MonoBehaviour
         // component for task 1 (and again for task 5), in order to set the material
         // to be used in rendering the cube.
         MeshRenderer renderer = this.gameObject.AddComponent<MeshRenderer>();
-        //renderer.material ...
+
+        renderer.material.shader = this.shader;
+        renderer.material.mainTexture = this.texture;
     }
 
     // Method to create a cube mesh with coloured vertices
@@ -133,23 +139,24 @@ public class CubeScript : MonoBehaviour
             new Vector2(0.666f, 0.333f),
             new Vector2(0.666f, 0.0f),
 
-            new Vector2(0.0f, 0.0f), // Left
-            new Vector2(0.0f, 0.0f),
-            new Vector2(0.0f, 0.0f),
-            new Vector2(0.0f, 0.0f),
-            new Vector2(0.0f, 0.0f),
-            new Vector2(0.0f, 0.0f),
+            new Vector2(0.333f, 0.666f), // left
+            new Vector2(0.333f, 1.0f),
+            new Vector2(0.666f, 1.0f),
+            new Vector2(0.333f, 0.666f),
+            new Vector2(0.666f, 1.0f),
+            new Vector2(0.666f, 0.666f),
 
             new Vector2(0.0f, 0.333f), // Right
             new Vector2(0.333f, 0.666f),
             new Vector2(0.333f, 0.333f),
-            new Vector2(0.0f, 0.666f),
             new Vector2(0.0f, 0.333f),
+            new Vector2(0.0f, 0.666f),
             new Vector2(0.333f, 0.666f),
+            
 
-            new Vector2(0.0f, 0.0f), // Front
-            new Vector2(0.0f, 0.0f),
-            new Vector2(0.0f, 0.0f),
+            new Vector2(0.666f, 0.666f),
+            new Vector2(0.333f, 0.333f), // Front\
+            new Vector2(0.333f, 0.666f),
             new Vector2(0.666f, 0.666f),
             new Vector2(0.666f, 0.333f),
             new Vector2(0.333f, 0.333f),

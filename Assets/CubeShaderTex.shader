@@ -22,12 +22,14 @@ Shader "Unlit/CubeShaderTex"
 			{
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
+				float4 color : COLOR;
 			};
 
 			struct vertOut
 			{
 				float4 vertex : SV_POSITION;
 				float2 uv : TEXCOORD0;
+				float4 color : COLOR;
 			};
 
 			// Implementation of the vertex shader
@@ -36,6 +38,7 @@ Shader "Unlit/CubeShaderTex"
 				vertOut o;
 				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 				o.uv = v.uv;
+				o.color = v.color;
 				return o;
 			}
 			
@@ -43,9 +46,13 @@ Shader "Unlit/CubeShaderTex"
 			fixed4 frag(vertOut v) : SV_Target
 			{
 				fixed4 col = tex2D(_MainTex, v.uv);
+				col = col * 0.5 + v.color * (1 - 0.5);
 				return col;
 			}
 			ENDCG
 		}
 	}
 }
+
+
+//TASK 5: ct texture color, cc vertex color
